@@ -1,0 +1,62 @@
+\textbf{- Reference:} 
+\href{https://e.math.cornell.edu/people/belk/numbertheory/CyclotomicPolynomials.pdf}{Fields and Cyclotomic Polynomials}~\cite{cyclotomic-polynomial}
+
+\subsection{Definitions}
+\label{subsec:order-def}
+
+\begin{tcolorbox}[title={\textbf{\tboxdef{\ref*{subsec:order-def}} Order Definition}}]
+$\bm{\textsf{ord}_{\mathbb{F}}(a)}$: For $a \in \mathbb{F}^{\times}$ (a finite field, \autoref{subsec:field-def}), $a$'s order is the smallest positive integer $k$ such that $a^k = 1$. 
+\end{tcolorbox}
+
+\subsection{Theorems}
+\label{subsec:order-theorem}
+
+
+
+\begin{tcolorbox}[title={\textbf{\tboxtheorem{\ref*{subsec:order-theorem}.1} Order Property (I)}}]
+For $a \in \mathbb{F}^{\times}$, and $n \geq 1$, $a^n = 1$ if and only if \textbf{\textsf{ord}}$_{\mathbb{F}}(a) \text{ } \mid \text{ } n$
+
+(i.e., $\textsf{ord}_{\mathbb{F}}(a)$ divides $n$).
+\end{tcolorbox}
+
+\begin{myproof}
+    \begin{enumerate}
+    \item \textit{Forward Proof:} If $\textsf{ord}_{\mathbb{F}}(a) \text{ } | \text{ } n$, then for $\textsf{ord}_{\mathbb{F}}(a) = k$ where $k$ is $a$'s order, and $n = lk$ for some integer $l$. 
+    
+    Then, $a^n = a^{lk} = (a^k)^l = 1^l = 1$.
+    \item \textit{Backward Proof:} If $a^n = 1$ and $\textsf{ord}_{\mathbb{F}}(a)=k$, write $n=qk+r$ with $0 \le r < k$. Then $1=a^n=a^{qk+r}=(a^k)^q a^r=a^r$. By minimality of $k$, we must have $r=0$, hence $k \mid n$.
+    \end{enumerate}
+\end{myproof}
+
+
+\begin{tcolorbox}[title={\textbf{\tboxtheorem{\ref*{subsec:order-theorem}.2} Order Property (II)}}]
+If $\textsf{ord}_{\mathbb{F}}(a) = k$, then for any $n \geq 1$, $\textsf{ord}_{\mathbb{F}}(a^n) = \dfrac{k} {\gcd(k, n)}$.
+\end{tcolorbox}
+\begin{myproof}
+    \begin{enumerate}
+    \item $a^k, a^{2k}, a^{3k}, \ldots = 1$. 
+    \item Given $\textsf{ord}_{\mathbb{F}}(a^n) = m$, $(a^n)^m, (a^n)^{2m}, (a^n)^{3m}, \ldots = 1$ 
+    \item Note that by definition of order, $x=k$ is the smallest value that satisfies $a^x$ = 1. Thus, given $\textsf{ord}_{\mathbb{F}}(a^n) = m$, then $m$ is the smallest integer that makes $(a^n)^m = 1$. Note that $(a^n)^m$ should be a multiple of $a^k$, which means $mn$ should be a multiple of $k$. The smallest possible integer $m$ that makes $mn$ a multiple of $k$ is $m = \dfrac{k}{\gcd(k, n)}$. 
+    \end{enumerate}
+\end{myproof}
+
+\begin{tcolorbox}[title={\textbf{\tboxtheorem{\ref*{subsec:order-theorem}.3} Order Property (III)}}]
+$\textsf{ord}_{\mathbb{F}}(a) = kn$ if and only if $\textsf{ord}_{\mathbb{F}}(a^k) = n$.
+\end{tcolorbox}
+\begin{myproof}
+\begin{enumerate}
+    \item \textit{Forward Proof:} Given $\textsf{ord}_{\mathbb{F}}(a) = kn$, and given Theorem~\ref*{subsec:order-theorem}.2, $\textsf{ord}_{\mathbb{F}}(a^k) = \dfrac{nk}{\gcd(k, nk)} = \dfrac{nk}{k} = n$.
+    \item \textit{Backward Proof:} Given $\textsf{ord}_{\mathbb{F}}(a^k)=n$ and letting $\textsf{ord}_{\mathbb{F}}(a)=m$, Theorem~\ref*{subsec:order-theorem}.2 gives $m/\gcd(m,k)=n$, so $m=n\,\gcd(m,k)$. In particular $k\mid m$, hence $m=nk$.
+\end{enumerate}
+\end{myproof}
+
+\begin{tcolorbox}[title={\textbf{\tboxtheorem{\ref*{subsec:order-theorem}.4} Fermat's Little Theorem}}]
+Given $|\mathbb{F}| = p$ (a prime) and $a \in \mathbb{F}$, $a^p = a$.
+\end{tcolorbox}
+\begin{myproof}
+    \begin{enumerate}
+    \item If $a=0$, then $a^p=a=0$.
+    \item If $a\ne 0$, then $a \in \mathbb{F}^{\times}$, the multiplicative group of the field, which has size $|\mathbb{F}^{\times}|=p-1$.
+    By Lagrange's theorem (in a finite group $G$, the order of any element divides $|G|$), the order of $a$ divides $p-1$, hence $a^{p-1}=1$. Therefore $a^p=a$.
+    \end{enumerate}
+\end{myproof}

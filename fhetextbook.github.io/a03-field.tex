@@ -1,0 +1,46 @@
+\textbf{- Reference:} 
+\href{https://e.math.cornell.edu/people/belk/numbertheory/CyclotomicPolynomials.pdf}{Fields and Cyclotomic Polynomials}~\cite{cyclotomic-polynomial}
+
+\subsection{Definitions}
+\label{subsec:field-def}
+
+\begin{tcolorbox}[title={\textbf{\tboxdef{\ref*{subsec:field-def}} Field Definitions}}]
+\begin{itemize}
+\item \textbf{Ring:} A set $R$ that is an abelian group under addition $(+)$, equipped with a multiplication $(\cdot)$ that is closed and associative, and such that multiplication distributes over addition on both sides: $a\cdot(b+c)=a\cdot b+a\cdot c$ and $(a+b)\cdot c=a\cdot c+b\cdot c$ for all $a,b,c\in R$. \emph{(Multiplication is not necessarily commutative (e.g., a matrix multiplication), and an identity element for $(\cdot)$ is optional unless stated “ring with unity”.)}
+\item \textbf{Field:} A set $F$ that is an abelian group under $(+)$, whose nonzero elements $F^\times=F\setminus\{0\}$ form an abelian group under $(\cdot)$, with multiplication distributing over addition.
+\item \textbf{Galois Field ($\mathrm{GF}(p^n)$):} A field with a finite number of elements, necessarily $p^n$ for some prime $p$ and positive integer $n$.
+\item \textbf{$\mathbb{Z}_p$ ($\mathbb{Z}/p\mathbb{Z}$):} For a prime $p$, the set $\{0,1,\ldots,p-1\}$ with addition and multiplication modulo $p$ forms a finite field. More generally, for any integer $m\ge 2$, $\mathbb{Z}_m$ is a commutative ring, and it is a field iff $m$ is prime.\end{itemize}
+\end{tcolorbox}
+
+$ $
+
+\subsection{Examples}
+\label{subsec:field-ex}
+
+$\mathbb{Z}$ (the set of all integers) is a ring, but not a field, because not all of its elements have a multiplicative inverse (as shown in \autoref{subsec:group-ex}). 
+
+$ $
+
+\noindent $\mathbb{R}$ (the set of all real numbers) is a field. As shown in \autoref{subsec:group-ex}, it is an abelian group under $(+)$, its nonzero elements form an abelian group under $(\cdot)$, and multiplication distributes over addition.
+
+$ $
+
+\noindent $\mathbb{Z}_7 = \{0, 1, 2, 3, 4, 5, 6\}$ is a finite field because:
+\begin{itemize}
+\item \textbf{Closed:} For any $a,b \in \mathbb{Z}_7$, there exist $c_1,c_2 \in \mathbb{Z}_7$ such that $a+b \equiv c_1 \pmod{7}$ and $a\cdot b \equiv c_2 \pmod{7}$.
+\item \textbf{Associative:} For any $a,b,c \in \mathbb{Z}_7$, $(a+b)+c=a+(b+c)$ and $(a\cdot b)\cdot c=a\cdot(b\cdot c)$.
+\item \textbf{Commutative:} For any $a,b \in \mathbb{Z}_7$, $a+b=b+a$ and $a\cdot b=b\cdot a$.
+\item \textbf{Distributive:} For any $a,b,c \in \mathbb{Z}_7$, $(a+b)\cdot c=a\cdot c+b\cdot c$.
+\item \textbf{Identity:} The additive identity is $0$ and the multiplicative identity is $1$.
+\item \textbf{Inverse:} For any $a \in \mathbb{Z}_7$, there exists $a' \in \mathbb{Z}_7$ such that $a+a' \equiv 0 \pmod{7}$ (e.g., the additive inverse of $3$ is $4$ since $3+4\equiv0 \pmod{7}$). For any $a \in \mathbb{Z}_7^\times=\{1,\dots,6\}$, there exists $b \in \mathbb{Z}_7$ such that $ab \equiv 1 \pmod{7}$ (e.g., $3\cdot5=15\equiv1 \pmod{7}$).
+\end{itemize}
+
+\subsection{Theorems}
+\label{subsec:field-theorem}
+
+\begin{tcolorbox}[title={\textbf{\tboxtheorem{\ref*{subsec:field-theorem}} Field Theorems}}]
+\begin{enumerate}
+\item \textbf{Size of Finite Field:} Every finite field is called a Galois Field and it has $p^n$ elements for some prime $p$ and positive integer $n$, conversely, for each $p^n$ there exists a finite field of that size (unique up to isomorphism).
+\item \textbf{Isomorphic Fields:} Any two finite fields $\mathbb{F}_1$ and $\mathbb{F}_2$ with the same number of elements are isomorphic, i.e., there exists a bijection $f:\mathbb{F}_1\to\mathbb{F}_2$ such that for all $a,b\in\mathbb{F}_1$, $f(a+b)=f(a)+f(b)$ and $f(ab)=f(a)f(b)$.
+\end{enumerate}
+\end{tcolorbox}

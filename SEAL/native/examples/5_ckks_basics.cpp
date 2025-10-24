@@ -310,6 +310,24 @@ void example_ckks_basics()
     print_vector(result, 3, 7);
 
     /*
+    Các bước xử lý của thuật toán này:
+
+    1. Khởi tạo tham số cho scheme CKKS, chọn các tham số modulus phù hợp để đảm bảo độ chính xác và chiều sâu phép nhân.
+    2. Thiết lập scale ban đầu (2^40) để ổn định độ chính xác trong quá trình tính toán.
+    3. Tạo context, sinh khóa bí mật, khóa công khai, khóa relinearization và khóa Galois.
+    4. Khởi tạo encoder CKKS và xác định số lượng slot.
+    5. Tạo vector input gồm các điểm đều trên đoạn [0, 1].
+    6. Encode vector input và mã hóa thành ciphertext.
+    7. Tính x^2, relinearize và rescale để giảm scale về gần 2^40.
+    8. Tính PI*x, rescale về gần 2^40.
+    9. Nhân (PI*x) với x^2 để được PI*x^3, relinearize và rescale.
+    10. Tính 0.4*x, rescale về gần 2^40.
+    11. Kiểm tra và chuẩn hóa lại scale của các ciphertext về đúng 2^40.
+    12. Modulus switch các ciphertext về cùng mức tham số để có thể cộng được.
+    13. Cộng ba thành phần: PI*x^3 + 0.4*x + 1.
+    14. Giải mã và decode kết quả, so sánh với kết quả thực tế.
+    */
+    /*
     While we did not show any computations on complex numbers in these examples,
     the CKKSEncoder would allow us to have done that just as easily. Additions
     and multiplications of complex numbers behave just as one would expect.
